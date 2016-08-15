@@ -14,6 +14,11 @@ class PagesController extends Controller
     }
     public function pageAction($id)
     {
-        return $this->render('PagesBundle:Default:Pages/layout/Pages.html.twig');
+         $em = $this->getDoctrine()->getManager();
+         $page = $em->getRepository('PagesBundle:Pages')->find($id);
+
+        if(!$page) throw $this->createNotFoundException('La page n\'existe pas');
+
+        return $this->render('PagesBundle:Default:Pages/layout/Pages.html.twig',array('page' => $page));
     }
 }

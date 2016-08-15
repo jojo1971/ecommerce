@@ -19,13 +19,11 @@ class __TwigTemplate_da60a6fa1ef1f28fadd9ab47182efabcaa1053e024c9991a53ee4f01181
         echo "<div class=\"well\">
         <ul class=\"nav nav-list\">
             <li class=\"nav-header\">Nos produits</li>
-            <li class=\"active\">
-                <a href=\"index.php\">Légumes</a>
-            </li>
-            <li>
-                <a href=\"index.php\">Fruits</a>
-            </li>
-        </ul>
+            ";
+        // line 4
+        echo $this->env->getExtension('actions')->renderUri($this->env->getExtension('http_kernel')->controller("EcommerceBundle:Categories:menu"), array());
+        // line 5
+        echo "        </ul>
 </div>
 ";
     }
@@ -35,20 +33,20 @@ class __TwigTemplate_da60a6fa1ef1f28fadd9ab47182efabcaa1053e024c9991a53ee4f01181
         return "::modulesUsed/navigation.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return array (  26 => 5,  24 => 4,  19 => 1,);
     }
 }
 /* <div class="well">*/
 /*         <ul class="nav nav-list">*/
 /*             <li class="nav-header">Nos produits</li>*/
-/*             <li class="active">*/
-/*                 <a href="index.php">Légumes</a>*/
-/*             </li>*/
-/*             <li>*/
-/*                 <a href="index.php">Fruits</a>*/
-/*             </li>*/
+/*             {% render(controller('EcommerceBundle:Categories:menu')) %}*/
 /*         </ul>*/
 /* </div>*/
 /* */

@@ -31,22 +31,15 @@ class __TwigTemplate_4f830d2d0e8e689c626f507530365f20df3bc853b53834f196d3e7d72c8
         echo "<div class=\"container\">
 \t\t<div class=\"row\">
 
+            <h1>";
+        // line 6
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "titre", array()), "html", null, true);
+        echo "</h1>
 \t\t\t<div class=\"span12\">
-\t\t\t\t<div class=\"row\">
-                    <h4>Item Brand and Category</h4>
-                    <h5>AB29837 Item Model</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"row\">
-                    <h4>Item Brand and Category</h4>
-                    <h5>AB29837 Item Model</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"row\">
-                    <h4>Item Brand and Category</h4>
-                    <h5>AB29837 Item Model</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-\t\t\t\t</div>
+\t\t\t";
+        // line 8
+        echo $this->getAttribute((isset($context["page"]) ? $context["page"] : $this->getContext($context, "page")), "contenu", array());
+        echo "
 \t\t\t</div>
 \t\t</div>
 \t</div>
@@ -66,7 +59,7 @@ class __TwigTemplate_4f830d2d0e8e689c626f507530365f20df3bc853b53834f196d3e7d72c8
 
     public function getDebugInfo()
     {
-        return array (  31 => 3,  28 => 2,  11 => 1,);
+        return array (  41 => 8,  36 => 6,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends "::layout/base.html.twig" %}*/
@@ -74,22 +67,9 @@ class __TwigTemplate_4f830d2d0e8e689c626f507530365f20df3bc853b53834f196d3e7d72c8
 /* <div class="container">*/
 /* 		<div class="row">*/
 /* */
+/*             <h1>{{ page.titre }}</h1>*/
 /* 			<div class="span12">*/
-/* 				<div class="row">*/
-/*                     <h4>Item Brand and Category</h4>*/
-/*                     <h5>AB29837 Item Model</h5>*/
-/*                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>*/
-/* 				</div>*/
-/* 				<div class="row">*/
-/*                     <h4>Item Brand and Category</h4>*/
-/*                     <h5>AB29837 Item Model</h5>*/
-/*                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>*/
-/* 				</div>*/
-/* 				<div class="row">*/
-/*                     <h4>Item Brand and Category</h4>*/
-/*                     <h5>AB29837 Item Model</h5>*/
-/*                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>*/
-/* 				</div>*/
+/* 			{{ page.contenu|raw }}*/
 /* 			</div>*/
 /* 		</div>*/
 /* 	</div>*/

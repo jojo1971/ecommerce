@@ -35,31 +35,40 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
         // line 6
         $this->loadTemplate("::modulesUsed/navigation.html.twig", "EcommerceBundle:Default:Produits/layout/produits.html.twig", 6)->display($context);
         // line 7
+        echo "                ";
+        $this->loadTemplate("UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig", "EcommerceBundle:Default:Produits/layout/produits.html.twig", 7)->display($context);
+        // line 8
         echo "            </div>
     <div class=\"span9\">
 
                 <ul class=\"thumbnails\">
                     ";
-        // line 11
+        // line 12
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(range(0, 10));
-        foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 12
+        $context['_seq'] = twig_ensure_traversable((isset($context["produits"]) ? $context["produits"] : $this->getContext($context, "produits")));
+        foreach ($context['_seq'] as $context["_key"] => $context["produit"]) {
+            // line 13
             echo "                    <li class=\"span3\">
                         <div class=\"thumbnail\">
                             <img src=\"";
-            // line 14
-            echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/holder.png"), "html", null, true);
-            echo "\" alt=\"DevAndClick\" width=\"300\" height=\"300\">
+            // line 15
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["produit"], "image", array()), "path", array()), "html", null, true);
+            echo "\" alt=\"DevAndClick\" width=\"300\" height=\"200\">
                             <div class=\"caption\">
-                                <h4>Thumbnail label</h4>
-                                <p>100,00 €</p>
-                                <a class=\"btn btn-primary\" href=\"";
+                                <h4>";
+            // line 17
+            echo twig_escape_filter($this->env, $this->getAttribute($context["produit"], "nom", array()), "html", null, true);
+            echo "</h4>
+                                <p>";
             // line 18
-            echo $this->env->getExtension('routing')->getPath("presentation");
+            echo twig_escape_filter($this->env, $this->getAttribute($context["produit"], "prix", array()), "html", null, true);
+            echo " €</p>
+                                <a class=\"btn btn-primary\" href=\"";
+            // line 19
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("presentation", array("id" => $this->getAttribute($context["produit"], "id", array()))), "html", null, true);
             echo "\">Plus d'infos</a>
                                 <a class=\"btn btn-success\" href=\"";
-            // line 19
+            // line 20
             echo $this->env->getExtension('routing')->getPath("panier");
             echo "\">Ajouter au panier</a>
                             </div>
@@ -68,9 +77,9 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
                     ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['produit'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 24
+        // line 25
         echo "
                 </ul>
 
@@ -106,7 +115,7 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
 
     public function getDebugInfo()
     {
-        return array (  74 => 24,  63 => 19,  59 => 18,  52 => 14,  48 => 12,  44 => 11,  38 => 7,  36 => 6,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  83 => 25,  72 => 20,  68 => 19,  64 => 18,  60 => 17,  55 => 15,  51 => 13,  47 => 12,  41 => 8,  38 => 7,  36 => 6,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends "::layout/base.html.twig" %}*/
@@ -115,18 +124,19 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
 /*         <div class="row">*/
 /*             <div class="span3">*/
 /*                 {% include '::modulesUsed/navigation.html.twig' %}*/
+/*                 {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}*/
 /*             </div>*/
 /*     <div class="span9">*/
 /* */
 /*                 <ul class="thumbnails">*/
-/*                     {% for i in 0..10 %}*/
+/*                     {% for produit in produits %}*/
 /*                     <li class="span3">*/
 /*                         <div class="thumbnail">*/
-/*                             <img src="{{ asset('img/holder.png') }}" alt="DevAndClick" width="300" height="300">*/
+/*                             <img src="{{ produit.image.path }}" alt="DevAndClick" width="300" height="200">*/
 /*                             <div class="caption">*/
-/*                                 <h4>Thumbnail label</h4>*/
-/*                                 <p>100,00 €</p>*/
-/*                                 <a class="btn btn-primary" href="{{ path('presentation') }}">Plus d'infos</a>*/
+/*                                 <h4>{{ produit.nom }}</h4>*/
+/*                                 <p>{{ produit.prix }} €</p>*/
+/*                                 <a class="btn btn-primary" href="{{ path('presentation', {'id': produit.id}) }}">Plus d'infos</a>*/
 /*                                 <a class="btn btn-success" href="{{ path('panier') }}">Ajouter au panier</a>*/
 /*                             </div>*/
 /*                         </div>*/

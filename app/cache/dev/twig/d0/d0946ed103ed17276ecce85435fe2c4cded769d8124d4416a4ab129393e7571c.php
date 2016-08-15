@@ -66,19 +66,19 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
         echo $this->env->getExtension('routing')->getPath("produits");
         echo "\">DevAndClick</a>
                     <div class=\"nav-collapse collapse\">
-                        <form class=\"navbar-form form-search pull-right\">
-                            <input id=\"Search\" name=\"Search\" type=\"text\" class=\"input-medium search-query\">
-                            <button type=\"submit\" class=\"btn\">Rechercher</button>
-                        </form>
-                        </div>
+                        ";
+        // line 24
+        echo $this->env->getExtension('actions')->renderUri($this->env->getExtension('http_kernel')->controller("EcommerceBundle:Produits:recherche"), array());
+        // line 25
+        echo "                        </div>
                     </div>
                 </div>
             </div>
 
               ";
-        // line 33
+        // line 30
         $this->displayBlock('body', $context, $blocks);
-        // line 34
+        // line 31
         echo "
             \t<hr />
 
@@ -89,9 +89,9 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 \t\t\t\t\t<h4>Informations</h4>
 \t\t\t\t\t<ul class=\"nav nav-stacked\">
                         ";
-        // line 43
+        // line 40
         echo $this->env->getExtension('actions')->renderUri($this->env->getExtension('http_kernel')->controller("PagesBundle:Pages:menu"), array());
-        // line 44
+        // line 41
         echo "\t\t\t\t\t</ul>
 \t\t\t\t</div>
 
@@ -115,11 +115,11 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 \t\t</div>
 \t</footer>
 \t<script src=\"";
-        // line 66
+        // line 63
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/jquery-1.10.0.min.js"), "html", null, true);
         echo "\"></script>
 \t<script src=\"";
-        // line 67
+        // line 64
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
         echo "\"></script>
 </body>
@@ -127,9 +127,9 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 
 
         ";
-        // line 72
+        // line 69
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 73
+        // line 70
         echo "    </body>
 </html>
 ";
@@ -146,12 +146,12 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
     {
     }
 
-    // line 33
+    // line 30
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 72
+    // line 69
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -168,7 +168,7 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 
     public function getDebugInfo()
     {
-        return array (  155 => 72,  150 => 33,  145 => 10,  139 => 5,  133 => 73,  131 => 72,  123 => 67,  119 => 66,  95 => 44,  93 => 43,  82 => 34,  80 => 33,  66 => 22,  51 => 11,  49 => 10,  45 => 9,  41 => 8,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  155 => 69,  150 => 30,  145 => 10,  139 => 5,  133 => 70,  131 => 69,  123 => 64,  119 => 63,  95 => 41,  93 => 40,  82 => 31,  80 => 30,  73 => 25,  71 => 24,  66 => 22,  51 => 11,  49 => 10,  45 => 9,  41 => 8,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -194,10 +194,7 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 /*                     </button>*/
 /*                     <a class="brand" href="{{ path('produits') }}">DevAndClick</a>*/
 /*                     <div class="nav-collapse collapse">*/
-/*                         <form class="navbar-form form-search pull-right">*/
-/*                             <input id="Search" name="Search" type="text" class="input-medium search-query">*/
-/*                             <button type="submit" class="btn">Rechercher</button>*/
-/*                         </form>*/
+/*                         {% render(controller('EcommerceBundle:Produits:recherche')) %}*/
 /*                         </div>*/
 /*                     </div>*/
 /*                 </div>*/
