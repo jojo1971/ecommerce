@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block titre %}Ecommerce Fruits et Légumes - By Devandclick{% endblock %}</title>
+        <meta name="keywords" content="{% block motsCles %}{% endblock %}"/>
+        <meta name="description" content="{% block description %}{% endblock %}"/>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
@@ -43,19 +45,19 @@
 
 				<div class="span4">
 					<h4>Notre entrepôt</h4>
-					<p><i class="icon-map-marker"></i>&nbsp;Paris 75 000 - 3 rue des jardins</p>
+					<p><i class="icon-map-marker"></i>&nbsp;{{ adresse }}</p>
 				</div>
 
 				<div class="span2">
 					<h4>Nous contacter</h4>
-					<p><i class="icon-phone"></i>&nbsp;Tel: 02 35 00 00 00</p>
-					<p><i class="icon-print"></i>&nbsp;Fax: 02 35 00 00 00</p>
+					<p><i class="icon-phone"></i>&nbsp;Tel: {{ telephone }}</p>
+					<p><i class="icon-print"></i>&nbsp;Fax: {{ fax }}</p>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="span4">
-					<p>&copy; Copyright 2014 - DevAndClick</p>
+					<p>&copy; Copyright {{ "now"|date('Y') }} - DevAndClick</p>
 				</div>
 			</div>
 		</div>

@@ -3046,7 +3046,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57b08c30e2a46</argument>
+            <argument>57b1cf6fbcb67</argument>
           </service>
         </argument>
         <argument type="service">
@@ -3330,7 +3330,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>57b08c30e2a46</argument>
+            <argument>57b1cf6fbcb67</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3626,6 +3626,9 @@
         </argument>
       </call>
       <call method="addExtension">
+        <argument type="service" id="tva"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.acme.demo"/>
       </call>
       <call method="addExtension">
@@ -3638,6 +3641,18 @@
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="templating.globals"/>
+      </call>
+      <call method="addGlobal">
+        <argument>telephone</argument>
+        <argument>02 35 00 00 00</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>fax</argument>
+        <argument>02 35 00 00 00</argument>
+      </call>
+      <call method="addGlobal">
+        <argument>adresse</argument>
+        <argument>Paris 75 000 - 3 rue des jardins</argument>
       </call>
     </service>
     <service id="twig.translation.extractor" class="Symfony\Bridge\Twig\Translation\TwigExtractor">
@@ -4023,6 +4038,9 @@
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
       <argument>null</argument>
       <argument>null</argument>
+    </service>
+    <service id="tva" class="Ecommerce\EcommerceBundle\Twig\Extension\TvaExtension">
+      <tag name="twig.extension"/>
     </service>
     <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
       <tag name="kernel.event_subscriber"/>

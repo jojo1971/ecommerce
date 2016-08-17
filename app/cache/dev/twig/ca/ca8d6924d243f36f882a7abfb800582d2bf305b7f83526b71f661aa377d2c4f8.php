@@ -40,47 +40,50 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
         // line 8
         echo "            </div>
     <div class=\"span9\">
-
-                <ul class=\"thumbnails\">
+        ";
+        // line 10
+        if ((twig_length_filter($this->env, (isset($context["produits"]) ? $context["produits"] : $this->getContext($context, "produits"))) != 0)) {
+            // line 11
+            echo "                <ul class=\"thumbnails\">
                     ";
-        // line 12
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["produits"]) ? $context["produits"] : $this->getContext($context, "produits")));
-        foreach ($context['_seq'] as $context["_key"] => $context["produit"]) {
-            // line 13
-            echo "                    <li class=\"span3\">
+            // line 12
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["produits"]) ? $context["produits"] : $this->getContext($context, "produits")));
+            foreach ($context['_seq'] as $context["_key"] => $context["produit"]) {
+                // line 13
+                echo "                    <li class=\"span3\">
                         <div class=\"thumbnail\">
                             <img src=\"";
-            // line 15
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["produit"], "image", array()), "path", array()), "html", null, true);
-            echo "\" alt=\"DevAndClick\" width=\"300\" height=\"200\">
+                // line 15
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["produit"], "image", array()), "path", array()), "html", null, true);
+                echo "\" alt=\"DevAndClick\" width=\"300\" height=\"200\">
                             <div class=\"caption\">
                                 <h4>";
-            // line 17
-            echo twig_escape_filter($this->env, $this->getAttribute($context["produit"], "nom", array()), "html", null, true);
-            echo "</h4>
+                // line 17
+                echo twig_escape_filter($this->env, $this->getAttribute($context["produit"], "nom", array()), "html", null, true);
+                echo "</h4>
                                 <p>";
-            // line 18
-            echo twig_escape_filter($this->env, $this->getAttribute($context["produit"], "prix", array()), "html", null, true);
-            echo " €</p>
+                // line 18
+                echo twig_escape_filter($this->env, $this->getAttribute($context["produit"], "prix", array()), "html", null, true);
+                echo " €</p>
                                 <a class=\"btn btn-primary\" href=\"";
-            // line 19
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("presentation", array("id" => $this->getAttribute($context["produit"], "id", array()))), "html", null, true);
-            echo "\">Plus d'infos</a>
+                // line 19
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("presentation", array("id" => $this->getAttribute($context["produit"], "id", array()))), "html", null, true);
+                echo "\">Plus d'infos</a>
                                 <a class=\"btn btn-success\" href=\"";
-            // line 20
-            echo $this->env->getExtension('routing')->getPath("panier");
-            echo "\">Ajouter au panier</a>
+                // line 20
+                echo $this->env->getExtension('routing')->getPath("panier");
+                echo "\">Ajouter au panier</a>
                             </div>
                         </div>
                     </li>
                     ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['produit'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 25
-        echo "
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['produit'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 25
+            echo "
                 </ul>
 
                 <div class=\"pagination\">
@@ -94,7 +97,14 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
                         <li><a href=\"#\">Suivant</a></li>
                     </ul>
                 </div>
-
+        ";
+        } else {
+            // line 40
+            echo "            aucun produit
+       ";
+        }
+        // line 42
+        echo "
     </div>
         </div>
     </div>
@@ -115,7 +125,7 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
 
     public function getDebugInfo()
     {
-        return array (  83 => 25,  72 => 20,  68 => 19,  64 => 18,  60 => 17,  55 => 15,  51 => 13,  47 => 12,  41 => 8,  38 => 7,  36 => 6,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  107 => 42,  103 => 40,  86 => 25,  75 => 20,  71 => 19,  67 => 18,  63 => 17,  58 => 15,  54 => 13,  50 => 12,  47 => 11,  45 => 10,  41 => 8,  38 => 7,  36 => 6,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends "::layout/base.html.twig" %}*/
@@ -127,7 +137,7 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
 /*                 {% include 'UtilisateursBundle:Default:modulesUsed/utilisateurs.html.twig' %}*/
 /*             </div>*/
 /*     <div class="span9">*/
-/* */
+/*         {% if produits|length != 0 %}*/
 /*                 <ul class="thumbnails">*/
 /*                     {% for produit in produits %}*/
 /*                     <li class="span3">*/
@@ -156,6 +166,9 @@ class __TwigTemplate_dcf63b70b42084268daa4abadf82b75a98c82bbfb429e9a6b4849bfa24e
 /*                         <li><a href="#">Suivant</a></li>*/
 /*                     </ul>*/
 /*                 </div>*/
+/*         {% else %}*/
+/*             aucun produit*/
+/*        {% endif %}*/
 /* */
 /*     </div>*/
 /*         </div>*/

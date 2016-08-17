@@ -97,19 +97,31 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 
 \t\t\t\t<div class=\"span4\">
 \t\t\t\t\t<h4>Notre entrepôt</h4>
-\t\t\t\t\t<p><i class=\"icon-map-marker\"></i>&nbsp;Paris 75 000 - 3 rue des jardins</p>
+\t\t\t\t\t<p><i class=\"icon-map-marker\"></i>&nbsp;";
+        // line 46
+        echo twig_escape_filter($this->env, (isset($context["adresse"]) ? $context["adresse"] : $this->getContext($context, "adresse")), "html", null, true);
+        echo "</p>
 \t\t\t\t</div>
 
 \t\t\t\t<div class=\"span2\">
 \t\t\t\t\t<h4>Nous contacter</h4>
-\t\t\t\t\t<p><i class=\"icon-phone\"></i>&nbsp;Tel: 02 35 00 00 00</p>
-\t\t\t\t\t<p><i class=\"icon-print\"></i>&nbsp;Fax: 02 35 00 00 00</p>
+\t\t\t\t\t<p><i class=\"icon-phone\"></i>&nbsp;Tel: ";
+        // line 51
+        echo twig_escape_filter($this->env, (isset($context["telephone"]) ? $context["telephone"] : $this->getContext($context, "telephone")), "html", null, true);
+        echo "</p>
+\t\t\t\t\t<p><i class=\"icon-print\"></i>&nbsp;Fax: ";
+        // line 52
+        echo twig_escape_filter($this->env, (isset($context["fax"]) ? $context["fax"] : $this->getContext($context, "fax")), "html", null, true);
+        echo "</p>
 \t\t\t\t</div>
 \t\t\t</div>
 
 \t\t\t<div class=\"row\">
 \t\t\t\t<div class=\"span4\">
-\t\t\t\t\t<p>&copy; Copyright 2014 - DevAndClick</p>
+\t\t\t\t\t<p>&copy; Copyright ";
+        // line 58
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
+        echo " - DevAndClick</p>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
@@ -168,7 +180,7 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 
     public function getDebugInfo()
     {
-        return array (  155 => 69,  150 => 30,  145 => 10,  139 => 5,  133 => 70,  131 => 69,  123 => 64,  119 => 63,  95 => 41,  93 => 40,  82 => 31,  80 => 30,  73 => 25,  71 => 24,  66 => 22,  51 => 11,  49 => 10,  45 => 9,  41 => 8,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
+        return array (  167 => 69,  162 => 30,  157 => 10,  151 => 5,  145 => 70,  143 => 69,  135 => 64,  131 => 63,  123 => 58,  114 => 52,  110 => 51,  102 => 46,  95 => 41,  93 => 40,  82 => 31,  80 => 30,  73 => 25,  71 => 24,  66 => 22,  51 => 11,  49 => 10,  45 => 9,  41 => 8,  37 => 7,  33 => 6,  29 => 5,  23 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -216,19 +228,19 @@ class __TwigTemplate_64f33c38b83d71645224f5e8cccfb9cdeff8dca74fa42602d836372e1ef
 /* */
 /* 				<div class="span4">*/
 /* 					<h4>Notre entrepôt</h4>*/
-/* 					<p><i class="icon-map-marker"></i>&nbsp;Paris 75 000 - 3 rue des jardins</p>*/
+/* 					<p><i class="icon-map-marker"></i>&nbsp;{{ adresse }}</p>*/
 /* 				</div>*/
 /* */
 /* 				<div class="span2">*/
 /* 					<h4>Nous contacter</h4>*/
-/* 					<p><i class="icon-phone"></i>&nbsp;Tel: 02 35 00 00 00</p>*/
-/* 					<p><i class="icon-print"></i>&nbsp;Fax: 02 35 00 00 00</p>*/
+/* 					<p><i class="icon-phone"></i>&nbsp;Tel: {{ telephone }}</p>*/
+/* 					<p><i class="icon-print"></i>&nbsp;Fax: {{ fax }}</p>*/
 /* 				</div>*/
 /* 			</div>*/
 /* */
 /* 			<div class="row">*/
 /* 				<div class="span4">*/
-/* 					<p>&copy; Copyright 2014 - DevAndClick</p>*/
+/* 					<p>&copy; Copyright {{ "now"|date('Y') }} - DevAndClick</p>*/
 /* 				</div>*/
 /* 			</div>*/
 /* 		</div>*/
