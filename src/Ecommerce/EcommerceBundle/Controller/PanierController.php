@@ -7,6 +7,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class PanierController extends Controller
 {
+    public function menuAction(){
+         $session = $this->get('request')->getSession();
+        if (!$session->has('panier'))
+            $articles = 0;
+        else
+            $articles = count($session->get('panier'));
+     return $this->render('EcommerceBundle:Default:panier/modulesUsed/panier.html.twig', array('articles' => $articles));
+    }
     public function supprimerAction($id){
 
         $session = $this->get('request')->getSession();
@@ -14,6 +22,7 @@ class PanierController extends Controller
         if(array_key_exists($id, $panier)){
             unset($panier[$id]);
             $session->set('panier', $panier);
+            $this->get('session')->getFlashBag()->add('success','Article supprimé avec succés');
         }
         return $this->redirect($this->generateUrl('panier'));
 
@@ -30,14 +39,18 @@ class PanierController extends Controller
 
         if (array_key_exists($id, $panier)){
             if($this->get('request')->query->get('qte') != null) $panier[$id] = $this->get('request')->query->get('qte');
+            $this->get('session')->getFlashBag()->add('success','Quantité modifiée avec succès');
         }else{
             if ($this->get('request')->query->get('qte') != null)
                 $panier[$id] = $this->get('request')->query->get('qte');
             else
                 $panier[$id] =1;
+             $this->get('session')->getFlashBag()->add('success','Article ajouté avec succès');
         }
 
         $session->set('panier', $panier);
+
+
 
         return $this->redirect($this->generateUrl('panier'));
     }

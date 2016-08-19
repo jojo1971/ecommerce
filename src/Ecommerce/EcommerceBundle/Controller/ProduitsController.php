@@ -20,20 +20,33 @@ class ProduitsController extends Controller
     }
     public function produitsAction()
     {
+        $session = $this->get('request')->getSession();
         $em = $this->getDoctrine()->getManager();
-        $produits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
 
-        return $this->render('EcommerceBundle:Default:Produits/layout/produits.html.twig', array('produits' => $produits));
+        $produits = $em->getRepository('EcommerceBundle:Produits')->findBy(array('disponible' => 1));
+        if($session->has('panier'))
+            $panier = $session->get('panier');
+        else
+            $panier = false;
+
+        return $this->render('EcommerceBundle:Default:Produits/layout/produits.html.twig', array('produits' => $produits,
+                                                                                                             'panier' => $panier));
     }
     public function presentationAction($id)
     {
+        $session = $this->get('request')->getSession();
 
         $em = $this->getDoctrine()->getManager();
         $produit = $em->getRepository('EcommerceBundle:Produits')->find($id);
 
          if(!$produit) throw $this->createNotFoundException('Le produit n\'existe pas');
+          if($session->has('panier'))
+            $panier = $session->get('panier');
+         else
+            $panier = false;
 
-        return $this->render('EcommerceBundle:Default:Produits/layout/presentation.html.twig', array('produit' => $produit));
+        return $this->render('EcommerceBundle:Default:Produits/layout/presentation.html.twig', array('produit' => $produit,
+                                                                                                       'panier' => $panier));
     }
 
     public  function rechercheAction(){

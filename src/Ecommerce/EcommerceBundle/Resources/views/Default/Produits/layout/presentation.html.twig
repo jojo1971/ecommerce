@@ -10,6 +10,7 @@
 
              <div class="span3">
                 {% include '::modulesUsed/navigation.html.twig' %}
+                 {% render(controller('EcommerceBundle:Panier:menu')) %}
             </div>
 
 			<div class="span9">
@@ -23,6 +24,7 @@
 						<h5>{{ produit.categorie.nom }}</h5>
 						<p> {{ produit.description }} </p>
 						<h4>{{ produit.prix|tva(produit.tva.multiplicate) }} €</h4>
+                        {% if panier[produit.id] is not defined  %}
 						<form action="{{ path('ajouter', {'id' : produit.id}) }}" method="get">
 
 
@@ -36,6 +38,9 @@
 							    <button class="btn btn-primary">Ajouter au panier</button>
 							</div>
 						</form>
+                            {% else %}
+                             <a href="{{ path('panier') }}" class="btn btn-primary">Le produit est déjà dans votre panier</a>
+                        {% endif %}
 
 					</div>
 				</div>
