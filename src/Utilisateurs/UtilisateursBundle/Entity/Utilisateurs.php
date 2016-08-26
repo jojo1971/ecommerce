@@ -6,7 +6,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Utilisateurs\UtilisateursBundle\Repository\UtilisateursRepository")
  * @ORM\Table(name="utilisateurs")
  */
 class Utilisateurs extends BaseUser
@@ -33,7 +33,7 @@ class Utilisateurs extends BaseUser
     private $commandes;
 
     /**
-     * @ORM\OneToMany(targetEntity="Utilisateurs\UtilisateursBundle\Entity\UtilisateursAdresses", mappedBy="utilisateur", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="\Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses", mappedBy="utilisateur", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $adresses;

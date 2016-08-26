@@ -210,6 +210,7 @@ class UniversalClassLoader
      */
     public function registerPrefixes(array $classes)
     {
+        
         foreach ($classes as $prefix => $locations) {
             $this->prefixes[$prefix] = (array) $locations;
         }

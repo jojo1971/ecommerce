@@ -2,8 +2,16 @@
 
 namespace Ecommerce\EcommerceBundle\Controller;
 
+use Ecommerce\EcommerceBundle\Entity\UtilisateursAdresses;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Ecommerce\EcommerceBundle\Form\UtilisateursAdressesType;
+use Ecommerce\EcommerceBundle\Entity\Commandes;
+use Ecommerce\EcommerceBundle\Controller\CommandeController;
+
+
+
 
 class PanierController extends Controller
 {
@@ -68,13 +76,81 @@ class PanierController extends Controller
         return $this->render('EcommerceBundle:Default:panier/layout/panier.html.twig', array('produits' => $produits,
                                                                                         'panier' => $session->get('panier')));
     }
+
+    public  function  adresseSuppressionAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($id);
+
+        if($this->container->get('security.context')->getToken()->getUser() != $entity->getUtilisateur() || !$entity)
+            return $this->redirect($this->generateUrl('livraison'));
+
+            $em->remove($entity);
+            $em->flush();
+
+          return ($this->redirect($this->generateUrl('livraison')));
+    }
+
     public function livraisonAction()
     {
-        return $this->render('EcommerceBundle:Default:panier/layout/livraison.html.twig');
+        $utilisateur = $this->container->get('security.context')->getToken()->getUser();
+        $entity = new UtilisateursAdresses();
+        $form = $this->createForm(new UtilisateursAdressesType(), $entity);
+
+        if($this->get('request')->getMethod() == 'POST'){
+
+            $form->handleRequest($this->get('request'));
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $entity->setUtilisateur($utilisateur);
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('livraison'));
+            }
+        }
+
+        return $this->render('EcommerceBundle:Default:panier/layout/livraison.html.twig', array('utilisateur' => $utilisateur,
+                                                                                                 'form' => $form->createView()));
+    }
+
+    public  function setLivraisonOnSession(){
+        $session = $this->get('request')->getSession();
+
+        if($session->has('adresse'))  $session->set('adresse', array());
+        $adresse = $session->get('adresse');
+
+        if($this->get('request')->request->get('livraison') != null && $this->get('request')->request->get('facturation') != null ){
+            $adresse['livraison'] = $this->get('request')->request->get('livraison');
+            $adresse['facturation'] = $this->get('request')->request->get('facturation');
+        }else{
+            return $this->redirect($this->generateUrl('validation'));
+        }
+        $session->set('adresse', $adresse);
+
+        return $this->redirect($this->generateUrl('validation'));
     }
 
     public function validationAction()
     {
-        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig');
+        if($this->get('request')->getMethod() == 'POST')
+            $this->setLivraisonOnSession();
+
+        $em = $this->getDoctrine()->getManager();
+        $prepareCommande = $this->forward('EcommerceBundle:Commandes:prepareCommande');
+        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
+
+        /*
+        $session = $this->get('request')->getSession();
+        $adresse = $session->get('adresse');
+
+        $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
+        $livraison = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['livraison']);
+        $facturation = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['facturation']);
+
+       */
+
+
+
+        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig', array('commande' => $commande));
     }
 }

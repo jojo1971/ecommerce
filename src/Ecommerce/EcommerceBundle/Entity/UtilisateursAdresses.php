@@ -1,6 +1,6 @@
 <?php
 
-namespace Utilisateurs\UtilisateursBundle\Entity;
+namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -79,7 +79,7 @@ class UtilisateursAdresses
     /**
      * @var string
      *
-     * @ORM\Column(name="complement", type="string", length=255)
+     * @ORM\Column(name="complement", type="string", length=255, nullable=true)
      */
     private $complement;
 
