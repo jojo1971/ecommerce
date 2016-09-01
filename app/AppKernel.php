@@ -3,6 +3,8 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
+
+
 class AppKernel extends Kernel
 {
     public function registerBundles()
@@ -21,7 +23,10 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Utilisateurs\UtilisateursBundle\UtilisateursBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-            //new Ensepar\Html2pdfBundle\EnseparHtml2pdfBundle(),
+            new Obtao\Bundle\Html2PdfBundle\ObtaoHtml2PdfBundle(),
+            new Ensepar\Html2pdfBundle\EnseparHtml2pdfBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
 
         );
 

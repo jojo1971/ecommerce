@@ -2,8 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="./css/facture.css" type="text/css">
+
+    <link  href="./css/facture.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h1>DevAndClick</h1>
@@ -20,15 +20,56 @@
     </tr>
     <tr>
         <td class="color">[[page_nb]]</td>
-        <td class="color"></td>
-        <td class="color"></td>
+        <td class="color">{{ facture.date|date('d-m-Y') }}</td>
+        <td class="color">{{ facture.reference }}</td>
     </tr>
 </table>
 <ul id="coordonnees">
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>{{ facture.commande.facturation.nom }} {{ facture.commande.facturation.prenom }}</li>
+    <li>{{ facture.commande.facturation.adresse }}</li>
+    <li>{{ facture.commande.facturation.cp }} {{ facture.commande.facturation.ville }} {{ facture.commande.facturation.pays }}</li>
 </ul>
+
+<table id="entity">
+    <tr>
+        <td width="280">Designation</td>
+        <td width="105">Quantité</td>
+        <td width="100">P.U - HT</td>
+        <td width="105">Montant HT</td>
+        <td width="105">Montant TTC</td>
+    </tr>
+    {% for produit in facture.commande.produit %}
+     <tr>
+         <td class="color">{{ produit.reference }}</td>
+         <td class="color">{{ produit.quantité }}</td>
+         <td class="color">{{ produit.prixHT }}</td>
+         <td class="color">{{ produit.prixHT * produit.quantité }} €</td>
+         <td class="color">{{ produit.prixTTC * produit.quantité }} €</td>
+     </tr>
+    {% endfor %}
+    </table>
+    <table id="total">
+        <tr>
+            <td width="110">Total HT</td>
+            <td width="100" class="color">{{ facture.commande.prixHT }} €</td>
+        </tr>
+        {% for key, tva in facture.commande.tva  %}
+        <tr>
+            <td width="110">TVA <span class="color min"> {{ key }}</span> :</td>
+            <td width="110" class="color">{{ tva }} €</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td width="110">Total TTC</td>
+            <td width="100" class="color">{{ facture.commande.prixTTC }} €</td>
+        </tr>
+    </table>
+    <div id="footer">
+        <span class="color strong">{{ adresse }}</span>
+        <br />
+        {{ telephone }}
+    </div>
+
 
 </body>
 </html>

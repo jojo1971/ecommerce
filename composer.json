@@ -21,6 +21,8 @@
         "friendsofsymfony/user-bundle":"~2.0@dev",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "ensepar/html2pdf-bundle" : "~2.0",
+        "obtao/html2pdf-bundle": "master-dev",
+        "knplabs/knp-paginator-bundle":"master-dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

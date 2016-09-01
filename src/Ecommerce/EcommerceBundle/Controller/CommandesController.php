@@ -22,7 +22,7 @@ class CommandesController extends Controller
         $panier = $session->get('panier');
         $commande = array('momo' => 'lolo');
         $totalHT = 0;
-        $totalTTC = 0;
+        $totalTVA = 0;
 
         $facturation = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['facturation']);
         $livraison = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['livraison']);
@@ -32,19 +32,23 @@ class CommandesController extends Controller
             $prixHT = ($produit->getPrix() * $panier[$produit->getId()]);
             $prixTTC = ($produit->getPrix() * $panier[$produit->getId()] / $produit->getTva()->getMultiplicate());
             $totalHT += $prixHT;
-            $totalTTC += $prixTTC;
 
             if (!isset($commande['tva']['%' . $produit->getTva()->getValeur()]))
                 $commande['tva']['%' . $produit->getTva()->getValeur()] = round($prixTTC - $prixHT, 2);
+
             else
                 $commande['tva']['%' . $produit->getTva()->getValeur()] += round($prixTTC - $prixHT, 2);
 
-            $commande['produit'][$produit->getId()] = array('reference' => $produit->getNom(),
-                'quantité' => $panier[$produit->getId()],
-                'prixHT' => round($produit->getPrix(), 2),
-                'prixTTC' => round($produit->getPrix() / $produit->getTva()->getMultiplicate(), 2)
 
-            );
+            $totalTVA += round(($prixTTC - $prixHT),2);
+
+                $commande['produit'][$produit->getId()] = array('reference' => $produit->getNom(),
+                    'quantité' => $panier[$produit->getId()],
+                    'prixHT' => round($produit->getPrix(), 2),
+                    'prixTTC' => round($produit->getPrix() / $produit->getTva()->getMultiplicate(), 2)
+
+                );
+
         }
 
 
@@ -67,7 +71,7 @@ class CommandesController extends Controller
                                                 'complement' => $facturation->getComplement());
 
             $commande['prixHT'] = round($totalHT,2);
-            $commande['prixTTC'] = round($totalTTC,2);
+            $commande['prixTTC'] = round($totalHT + $totalTVA,2);
             $commande['token'] = bin2hex($generator->nextBytes(20));
 
             return $commande;

@@ -8,8 +8,8 @@ class ComposerStaticInit6b7530ef2eb87d068a9b17bd80383d8f
 {
     public static $files = array (
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
         '3fad0ebbff9928a94a9d8941fb314bd8' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/functions.php',
+        'ce89ac35a6c330c55f4710717db9ff78' => __DIR__ . '/..' . '/kriswallsmith/assetic/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -23,6 +23,10 @@ class ComposerStaticInit6b7530ef2eb87d068a9b17bd80383d8f
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'K' => 
+        array (
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
         ),
         'I' => 
         array (
@@ -63,6 +67,10 @@ class ComposerStaticInit6b7530ef2eb87d068a9b17bd80383d8f
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
         ),
         'Incenteev\\ParameterHandler\\' => 
         array (
@@ -140,6 +148,34 @@ class ComposerStaticInit6b7530ef2eb87d068a9b17bd80383d8f
                 0 => __DIR__ . '/..' . '/psr/log',
             ),
         ),
+        'O' => 
+        array (
+            'Obtao\\Bundle\\Html2PdfBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/obtao/html2pdf-bundle',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Component' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
+            ),
+        ),
+        'H' => 
+        array (
+            'HTML2PDF' => 
+            array (
+                0 => __DIR__ . '/..' . '/ensepar/html2pdf',
+            ),
+        ),
+        'E' => 
+        array (
+            'Ensepar\\Html2pdfBundle' => 
+            array (
+                0 => __DIR__ . '/..' . '/ensepar/html2pdf-bundle',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\ORM\\' => 
@@ -189,8 +225,12 @@ class ComposerStaticInit6b7530ef2eb87d068a9b17bd80383d8f
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/IntlDateFormatter.php',
         'Locale' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/Locale.php',
         'NumberFormatter' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/Intl/Resources/stubs/NumberFormatter.php',
+        'QRcode' => __DIR__ . '/..' . '/ensepar/tcpdf/qrcode.php',
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
         'SqlFormatter' => __DIR__ . '/..' . '/jdorn/sql-formatter/lib/SqlFormatter.php',
+        'TCPDF' => __DIR__ . '/..' . '/ensepar/tcpdf/tcpdf.php',
+        'TCPDF2DBarcode' => __DIR__ . '/..' . '/ensepar/tcpdf/2dbarcodes.php',
+        'TCPDFBarcode' => __DIR__ . '/..' . '/ensepar/tcpdf/barcodes.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

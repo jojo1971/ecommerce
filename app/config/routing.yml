@@ -1,7 +1,4 @@
-ensepar_html2pdf:
-    resource: "@EnseparHtml2pdfBundle/Controller/"
-    type:     annotation
-    prefix:   /
+
 
 utilisateurs:
     resource: "@UtilisateursBundle/Resources/config/routing.yml"

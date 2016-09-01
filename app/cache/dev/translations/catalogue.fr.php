@@ -123,6 +123,8 @@ $catalogue = new MessageCatalogue('fr', array (
   ),
   'messages' => 
   array (
+    'Previous' => 'Précédent',
+    'Next' => 'Suivant',
     'Symfony2 is great' => 'J\'aime Symfony2',
   ),
   'FOSUserBundle' => 
@@ -180,9 +182,9 @@ L\'équipe.
     'form.email' => 'Adresse e-mail',
     'form.current_password' => 'Mot de passe actuel',
     'form.password' => 'Mot de passe',
-    'form.password_confirmation' => 'Vérification',
+    'form.password_confirmation' => 'Confirmation du mot de passe',
     'form.new_password' => 'Nouveau mot de passe',
-    'form.new_password_confirmation' => 'Vérification',
+    'form.new_password_confirmation' => 'Confirmation du nouveau mot de passe',
   ),
 ));
 
@@ -363,6 +365,11 @@ the Team.
     'form.password_confirmation' => 'Repeat password',
     'form.new_password' => 'New password',
     'form.new_password_confirmation' => 'Repeat new password',
+  ),
+  'KnpPaginatorBundle' => 
+  array (
+    'label_previous' => 'Previous',
+    'label_next' => 'Next',
   ),
 ));
 $catalogue->addFallbackCatalogue($catalogueEn);
