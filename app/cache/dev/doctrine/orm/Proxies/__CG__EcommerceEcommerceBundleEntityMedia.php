@@ -36,7 +36,7 @@ class Media extends \Ecommerce\EcommerceBundle\Entity\Media implements \Doctrine
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = [];
+    public static $lazyPropertiesDefaults = ['name' => NULL];
 
 
 
@@ -46,16 +46,60 @@ class Media extends \Ecommerce\EcommerceBundle\Entity\Media implements \Doctrine
      */
     public function __construct($initializer = null, $cloner = null)
     {
+        unset($this->name);
 
         $this->__initializer__ = $initializer;
         $this->__cloner__      = $cloner;
     }
 
+    /**
+     * 
+     * @param string $name
+     */
+    public function __get($name)
+    {
+        if (array_key_exists($name, $this->__getLazyProperties())) {
+            $this->__initializer__ && $this->__initializer__->__invoke($this, '__get', [$name]);
 
+            return $this->$name;
+        }
 
+        trigger_error(sprintf('Undefined property: %s::$%s', __CLASS__, $name), E_USER_NOTICE);
+    }
 
+    /**
+     * 
+     * @param string $name
+     * @param mixed  $value
+     */
+    public function __set($name, $value)
+    {
+        if (array_key_exists($name, $this->__getLazyProperties())) {
+            $this->__initializer__ && $this->__initializer__->__invoke($this, '__set', [$name, $value]);
 
+            $this->$name = $value;
 
+            return;
+        }
+
+        $this->$name = $value;
+    }
+
+    /**
+     * 
+     * @param  string $name
+     * @return boolean
+     */
+    public function __isset($name)
+    {
+        if (array_key_exists($name, $this->__getLazyProperties())) {
+            $this->__initializer__ && $this->__initializer__->__invoke($this, '__isset', [$name]);
+
+            return isset($this->$name);
+        }
+
+        return false;
+    }
 
     /**
      * 
@@ -64,10 +108,10 @@ class Media extends \Ecommerce\EcommerceBundle\Entity\Media implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'id', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'path', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'alt'];
+            return ['__isInitialized__', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'id', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'updateAt', 'name', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'path', 'file'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'id', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'path', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'alt'];
+        return ['__isInitialized__', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'id', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'updateAt', '' . "\0" . 'Ecommerce\\EcommerceBundle\\Entity\\Media' . "\0" . 'path', 'file'];
     }
 
     /**
@@ -89,6 +133,7 @@ class Media extends \Ecommerce\EcommerceBundle\Entity\Media implements \Doctrine
                 }
             };
 
+            unset($this->name);
         }
     }
 
@@ -176,6 +221,94 @@ class Media extends \Ecommerce\EcommerceBundle\Entity\Media implements \Doctrine
     /**
      * {@inheritDoc}
      */
+    public function postLoad()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'postLoad', []);
+
+        return parent::postLoad();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUploadRootDir()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUploadRootDir', []);
+
+        return parent::getUploadRootDir();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAbsolutePath()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAbsolutePath', []);
+
+        return parent::getAbsolutePath();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAssetPath()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAssetPath', []);
+
+        return parent::getAssetPath();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function preUpload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'preUpload', []);
+
+        return parent::preUpload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function upload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'upload', []);
+
+        return parent::upload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function preRemoveUpload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'preRemoveUpload', []);
+
+        return parent::preRemoveUpload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeUpload()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUpload', []);
+
+        return parent::removeUpload();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getId()
     {
         if ($this->__isInitialized__ === false) {
@@ -186,17 +319,6 @@ class Media extends \Ecommerce\EcommerceBundle\Entity\Media implements \Doctrine
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setPath($path)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', [$path]);
-
-        return parent::setPath($path);
     }
 
     /**
@@ -213,23 +335,12 @@ class Media extends \Ecommerce\EcommerceBundle\Entity\Media implements \Doctrine
     /**
      * {@inheritDoc}
      */
-    public function setAlt($alt)
+    public function getName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlt', [$alt]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
-        return parent::setAlt($alt);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAlt()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlt', []);
-
-        return parent::getAlt();
+        return parent::getName();
     }
 
 }

@@ -16,6 +16,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Obtao\\Bundle\\Html2PdfBundle' => array($vendorDir . '/obtao/html2pdf-bundle'),
     'Knp\\Component' => array($vendorDir . '/knplabs/knp-components/src'),
+    'Imagine' => array($vendorDir . '/imagine/imagine/lib'),
     'HTML2PDF' => array($vendorDir . '/ensepar/html2pdf'),
     'Ensepar\\Html2pdfBundle' => array($vendorDir . '/ensepar/html2pdf-bundle'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),

@@ -3,6 +3,7 @@
 namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Produits
@@ -28,13 +29,13 @@ class Produits
     private $image;
 
       /**
-     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Tva", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Tva", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $tva;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Categories", cascade={"persist","remove"})
+     * @ORM\ManyToOne(targetEntity="Ecommerce\EcommerceBundle\Entity\Categories", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie;
@@ -43,6 +44,7 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=125)
+     * @Assert\NotBlank(message="Ce champs doit être rempli :")
      */
     private $nom;
 

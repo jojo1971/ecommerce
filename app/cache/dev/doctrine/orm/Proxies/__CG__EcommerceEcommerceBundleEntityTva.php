@@ -254,4 +254,15 @@ class Tva extends \Ecommerce\EcommerceBundle\Entity\Tva implements \Doctrine\ORM
         return parent::getValeur();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
+    }
+
 }

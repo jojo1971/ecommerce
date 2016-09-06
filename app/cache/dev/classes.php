@@ -2904,7 +2904,7 @@ namespace
 {
 class Twig_Environment
 {
-const VERSION ='1.24.1';
+const VERSION ='1.24.2';
 protected $charset;
 protected $loader;
 protected $debug;
